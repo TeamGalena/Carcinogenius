@@ -1,13 +1,13 @@
 modLoader="javafml"
 loaderVersion="[1,)"
-license="https://github.com/${repository}/blob/carcinogenius-1.21.x/LICENSE.md"
+license="https://github.com/${repository}/blob/HEAD/LICENSE.md"
 issueTrackerURL="https://github.com/${repository}/issues/"
 
 [[mods]]
 modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
-updateJSONURL="https://api.modrinth.com/updates/oreganized/forge_updates.json"
+updateJSONURL="https://api.modrinth.com/updates/oreganized/forge_updates.json?neoforge=only"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/oreganized"
 logoBlur=false
 itemIcon="oreganized:asbestos_block"
