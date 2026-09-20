@@ -48,6 +48,8 @@ dependencies {
 }
 
 upload {
+    maven.nexus()
+
     forEach {
         dependencies.required("oreganized")
     }
