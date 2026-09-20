@@ -1,7 +1,9 @@
 package galena.oreganized.carcinogenius;
 
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
-import galena.oreganized.Oreganized;
+import galena.oreganized.OConstants;
+import galena.oreganized.argentum.index.ArgentumBlocks;
+import galena.oreganized.argentum.index.ArgentumItems;
 import galena.oreganized.carcinogenius.data.OBlockStates;
 import galena.oreganized.carcinogenius.data.OBlockTags;
 import galena.oreganized.carcinogenius.data.OItemModels;
@@ -13,8 +15,7 @@ import galena.oreganized.carcinogenius.index.OCEffects;
 import galena.oreganized.carcinogenius.index.OCItems;
 import galena.oreganized.carcinogenius.index.OCParticleTypes;
 import galena.oreganized.carcinogenius.index.OCPotions;
-import galena.oreganized.index.OBlocks;
-import galena.oreganized.index.OItems;
+import galena.oreganized.plumbum.index.PlumbumBlocks;
 import java.util.Optional;
 import java.util.function.Supplier;
 import net.minecraft.DetectedVersion;
@@ -35,14 +36,11 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @Mod(OreganizedCarcinogenius.MOD_ID)
 public class OreganizedCarcinogenius {
-    public static final Logger LOGGER = LogManager.getLogger();
-    public static final String NAMESPACE = Oreganized.MOD_ID;
-    public static final String MOD_ID = Oreganized.MOD_ID + "_carcinogenius";
+    public static final String NAMESPACE = OConstants.MOD_ID;
+    public static final String MOD_ID = OConstants.MOD_ID + "_carcinogenius";
 
     public static ResourceLocation modLoc(String location) {
         return ResourceLocation.fromNamespaceAndPath(NAMESPACE, location);
@@ -99,17 +97,17 @@ public class OreganizedCarcinogenius {
         var tab = event.getTabKey();
 
         if (tab == CreativeModeTabs.BUILDING_BLOCKS) {
-            putAfter(event, OBlocks.LEAD_BLOCK, OCBlocks.ASBESTOS_BLOCK);
+            putAfter(event, PlumbumBlocks.LEAD_BLOCK, OCBlocks.ASBESTOS_BLOCK);
         }
 
         if (tab == CreativeModeTabs.NATURAL_BLOCKS) {
-            putAfter(event, OBlocks.RAW_SILVER_BLOCK, OCBlocks.RAW_ASBESTOS_BLOCK);
-            putAfter(event, OBlocks.DEEPSLATE_SILVER_ORE, OCBlocks.ASBESTOS_ORE);
+            putAfter(event, ArgentumBlocks.RAW_SILVER_BLOCK, OCBlocks.RAW_ASBESTOS_BLOCK);
+            putAfter(event, ArgentumBlocks.DEEPSLATE_SILVER_ORE, OCBlocks.ASBESTOS_ORE);
             putAfter(event, OCBlocks.ASBESTOS_ORE, OCBlocks.DEEPSLATE_ASBESTOS_ORE);
         }
 
         if (tab == CreativeModeTabs.INGREDIENTS) {
-            putAfter(event, OItems.RAW_SILVER, OCItems.RAW_ASBESTOS);
+            putAfter(event, ArgentumItems.RAW_SILVER, OCItems.RAW_ASBESTOS);
             putAfter(event, OCItems.RAW_ASBESTOS, OCItems.REFINED_ASBESTOS);
         }
     }

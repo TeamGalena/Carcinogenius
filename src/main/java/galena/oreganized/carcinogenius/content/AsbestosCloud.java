@@ -1,8 +1,8 @@
 package galena.oreganized.carcinogenius.content;
 
-import galena.oreganized.api.PreventableEffectCloud;
 import galena.oreganized.carcinogenius.index.OCEffects;
 import galena.oreganized.carcinogenius.index.OCParticleTypes;
+import galena.oreganized.plumbum.accessor.PreventableEffectCloud;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.AreaEffectCloud;
@@ -16,7 +16,7 @@ public class AsbestosCloud {
         var cloud = new AreaEffectCloud(level, vec.x, vec.y, vec.z);
 
         if (cloud instanceof PreventableEffectCloud preventable) {
-            preventable.setPreventable(true);
+            preventable.oreganized$setPreventable(true);
         }
 
         cloud.addEffect(new MobEffectInstance(OCEffects.LUNG_DAMAGE, 50));
