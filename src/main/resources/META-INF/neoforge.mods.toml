@@ -10,8 +10,8 @@ displayName="${mod_name}"
 updateJSONURL="https://api.modrinth.com/updates/oreganized/forge_updates.json?neoforge=only"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/oreganized"
 logoBlur=false
-itemIcon="oreganized:asbestos_block"
-configBackground="oreganized:textures/block/asbestos_block.png"
+itemIcon="${mod_id}:asbestos_block"
+configBackground="${mod_id}:textures/block/asbestos_block.png"
 credits="Thanks to our wonderful Patreon members and those who help participate in discussions on our Discord server!"
 authors="${mod_author}"
 description='''
@@ -39,6 +39,6 @@ Addon for Oreganized that includes the asbestos content added for april fools in
 
 [[dependencies.${mod_id}]]
     modId="oreganized"
-    versionRange="[5.0.0,)"
+    versionRange="[5.3.0,)"
     ordering="AFTER"
     side="BOTH"
