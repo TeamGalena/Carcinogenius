@@ -52,3 +52,5 @@ upload {
         dependencies.required("oreganized")
     }
 }
+
+enableSpotless()
