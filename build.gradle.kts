@@ -41,7 +41,8 @@ repositories {
 }
 
 dependencies {
-    modImplementation(libs.oreganized)
+    modCompileOnlyApi(libs.oreganized.plumbum)
+    modRuntimeOnly(libs.oreganized)
     modRuntimeOnly(libs.multikulti.datagen)
 
     modRuntimeOnly(libs.jei)

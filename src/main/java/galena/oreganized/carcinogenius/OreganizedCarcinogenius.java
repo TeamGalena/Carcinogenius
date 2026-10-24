@@ -1,9 +1,8 @@
 package galena.oreganized.carcinogenius;
 
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
+import galena.oreganized.CreativeModeTabBuilder;
 import galena.oreganized.OConstants;
-import galena.oreganized.argentum.index.ArgentumBlocks;
-import galena.oreganized.argentum.index.ArgentumItems;
 import galena.oreganized.carcinogenius.data.OBlockStates;
 import galena.oreganized.carcinogenius.data.OBlockTags;
 import galena.oreganized.carcinogenius.data.OItemModels;
@@ -16,19 +15,19 @@ import galena.oreganized.carcinogenius.index.OCItems;
 import galena.oreganized.carcinogenius.index.OCParticleTypes;
 import galena.oreganized.carcinogenius.index.OCPotions;
 import galena.oreganized.plumbum.index.PlumbumBlocks;
+
 import java.util.Optional;
-import java.util.function.Supplier;
+
 import net.minecraft.DetectedVersion;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -94,26 +93,21 @@ public class OreganizedCarcinogenius {
 
     @SubscribeEvent
     public void buildCreativeModeTabContents(BuildCreativeModeTabContentsEvent event) {
-        var tab = event.getTabKey();
+        var builder = new CreativeModeTabBuilder(event);
 
-        if (tab == CreativeModeTabs.BUILDING_BLOCKS) {
-            putAfter(event, PlumbumBlocks.LEAD_BLOCK, OCBlocks.ASBESTOS_BLOCK);
-        }
+        builder.add(CreativeModeTabs.BUILDING_BLOCKS, tab -> {
+            tab.putAfter(PlumbumBlocks.LEAD_BLOCK, OCBlocks.ASBESTOS_BLOCK);
+        });
 
-        if (tab == CreativeModeTabs.NATURAL_BLOCKS) {
-            putAfter(event, ArgentumBlocks.RAW_SILVER_BLOCK, OCBlocks.RAW_ASBESTOS_BLOCK);
-            putAfter(event, ArgentumBlocks.DEEPSLATE_SILVER_ORE, OCBlocks.ASBESTOS_ORE);
-            putAfter(event, OCBlocks.ASBESTOS_ORE, OCBlocks.DEEPSLATE_ASBESTOS_ORE);
-        }
+        builder.add(CreativeModeTabs.NATURAL_BLOCKS, tab -> {
+            tab.putAfter(Blocks.RAW_GOLD_BLOCK, OCBlocks.RAW_ASBESTOS_BLOCK);
+            tab.putAfter(Blocks.GOLD_ORE, OCBlocks.ASBESTOS_ORE);
+            tab.putAfter(Blocks.DEEPSLATE_GOLD_ORE, OCBlocks.DEEPSLATE_ASBESTOS_ORE);
+        });
 
-        if (tab == CreativeModeTabs.INGREDIENTS) {
-            putAfter(event, ArgentumItems.RAW_SILVER, OCItems.RAW_ASBESTOS);
-            putAfter(event, OCItems.RAW_ASBESTOS, OCItems.REFINED_ASBESTOS);
-        }
-    }
-
-    private static void putAfter(BuildCreativeModeTabContentsEvent event, ItemLike after, Supplier<? extends ItemLike> item) {
-        event.insertAfter(new ItemStack(after), new ItemStack(item.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        builder.add(CreativeModeTabs.INGREDIENTS, tab -> {
+            tab.putAfter(Items.RAW_GOLD, OCItems.RAW_ASBESTOS, OCItems.REFINED_ASBESTOS);
+        });
     }
 
 }

@@ -1,9 +1,11 @@
 [versions]
 multikulti = "2.0.4"
+oreganized = "5.4.0-SNAPSHOT"
 
 [libraries]
 multikulti-datagen = { group = "com.possible-triangle", name = "multikulti-1.21.1-datagen-neoforge", version.ref = "multikulti" }
 
 jei = { group = "mezz.jei", name = "jei-1.21.1-neoforge", version = "19.21.0.247" }
 
-oreganized = { "group" = "dev.galena", name = "oreganized-1.21.1", version = "5.3.0" }
+oreganized = { "group" = "dev.galena", name = "oreganized-1.21.1", version.ref = "oreganized" }
+oreganized-plumbum = { "group" = "dev.galena", name = "oreganized-1.21.1-plumbum", version.ref = "oreganized" }
